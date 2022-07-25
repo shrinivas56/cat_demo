@@ -27,9 +27,10 @@ class BreedListingViewModel @Inject constructor(private val breedListingUseCase:
         breedListingUseCase.invoke(
             viewModelScope,
             Constants.FETCH_BREEDS,
-            pageNo++,
+            pageNo,
             onResult = object : UseCaseResponse<List<CatBreed>>{
                 override fun onSuccess(result: List<CatBreed>) {
+                    pageNo++
                     isLoading.value = false
                     if(result.isEmpty()) _isPaginationDataAvailable = false
                     _catBreeds.value =  _catBreeds.value.apply {
