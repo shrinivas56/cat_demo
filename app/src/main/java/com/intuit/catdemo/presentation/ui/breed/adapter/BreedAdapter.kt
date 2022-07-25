@@ -30,10 +30,10 @@ class BreedAdapter(
         }
     }
 
-    fun updateList(catBreeds : List<CatBreed>){
+    fun updateList(catBreeds : ArrayList<CatBreed>){
         val start = this.catBreeds.size
-        this.catBreeds.addAll(catBreeds)
-        notifyItemRangeChanged(start, start+10)
+        this.catBreeds = catBreeds
+        notifyItemRangeChanged(start, 10)
     }
 
     override fun getItemCount() = catBreeds.size;

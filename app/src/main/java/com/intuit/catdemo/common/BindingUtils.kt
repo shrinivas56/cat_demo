@@ -12,9 +12,9 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 object BindingUtils {
 
     @JvmStatic
-    @BindingAdapter("imageUrl", "placeHolder", requireAll = false)
-    fun ImageView.loadImage(url: String?, error: Drawable?) {
-        if(url==null){
+    @BindingAdapter("imageUrl", "placeHolder", requireAll = true)
+    fun ImageView.loadImage(url: String?, error: Drawable) {
+        if(url==null ){
             setImageDrawable(error)
         }
         Glide.with(this.context).load(url).error(error).apply(

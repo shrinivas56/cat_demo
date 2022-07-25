@@ -8,12 +8,17 @@
         android:id="@+id/breedListingFragment"
         android:name="com.intuit.catdemo.presentation.ui.breed.BreedListingFragment"
         android:label="BreedListingFragment" >
-        <!--<action
+        <action
             android:id="@+id/action_breedListingFragment_to_breedDetailFragment"
-            app:destination="@id/breedDetailFragment" />-->
+            app:destination="@id/breedDetailFragment" />
     </fragment>
-    <!--<fragment
+    <fragment
         android:id="@+id/breedDetailFragment"
         android:name="com.intuit.catdemo.presentation.ui.breed.BreedDetailFragment"
-        android:label="BreedDetailFragment" />-->
+        android:label="BreedDetailFragment" >
+        <argument
+            android:name="@string/key_cat_breed"
+            app:argType="com.intuit.catdemo.domain.model.CatBreed"
+            app:nullable="false"/>
+    </fragment>
 </navigation>

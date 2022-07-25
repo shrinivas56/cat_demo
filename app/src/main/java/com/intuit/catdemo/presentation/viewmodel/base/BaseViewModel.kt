@@ -8,8 +8,7 @@ open class BaseViewModel : ViewModel() {
     protected val isLoading = MutableLiveData(false)
     val getIsLoading get() = isLoading
 
-    protected val showMessage = MutableLiveData<String?>()
-    val getShowMessage get() = showMessage
+    val showMessage = MutableLiveData<String>()
 
     protected val isError = MutableLiveData<Throwable>()
     val getIsError get() = isError

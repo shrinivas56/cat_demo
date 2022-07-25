@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Cat Breeds</string>
     <string name="fetch_breeds">Fetch Breeds</string>
+    <string name="key_cat_breed">catBreedKey</string>
+    <string name="no_internet_connection">Please check your internet connection and try again.</string>
+    <string name="something_went_wrong">Something went wrong, Please try again later.</string>
 </resources>

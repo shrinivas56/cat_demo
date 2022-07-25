@@ -1,7 +1,6 @@
 package com.intuit.catdemo.presentation.ui.breed
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,9 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.intuit.catdemo.R
@@ -18,6 +19,8 @@ import com.intuit.catdemo.presentation.ui.breed.adapter.BreedAdapter
 import com.intuit.catdemo.presentation.ui.breed.listener.BreedItemClickListener
 import com.intuit.catdemo.presentation.viewmodel.breed.BreedListingViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.net.ConnectException
+
 
 @AndroidEntryPoint
 class BreedListingFragment : Fragment(), BreedItemClickListener{
@@ -56,6 +59,16 @@ class BreedListingFragment : Fragment(), BreedItemClickListener{
             if(it.isNotEmpty())
                 binding.isDataAvailable = true
         }
+        viewModel.getIsError.observe(viewLifecycleOwner){
+            if(it is ConnectException){
+                viewModel.showMessage.value = getString(R.string.no_internet_connection)
+            } else {
+                viewModel.showMessage.value = getString(R.string.something_went_wrong)
+            }
+        }
+        viewModel.showMessage.observe(viewLifecycleOwner){
+            Toast.makeText(activity, it, Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun setRecyclerViewScrollListener() {
@@ -74,7 +87,9 @@ class BreedListingFragment : Fragment(), BreedItemClickListener{
     }
 
     override fun onItemClick(position: Int) {
-        Toast.makeText(activity, " $position Clicked ", Toast.LENGTH_LONG).show()
+        val bundle = Bundle()
+        bundle.putParcelable(getString(R.string.key_cat_breed), viewModel.catBreeds.value!![position])
+        findNavController().navigate(R.id.action_breedListingFragment_to_breedDetailFragment, bundle)
     }
 
 }

@@ -1,9 +1,12 @@
 package com.intuit.catdemo.di
 
+import android.content.Context
+import com.intuit.catdemo.common.ConnectivityInterceptor
 import com.intuit.catdemo.data.source.remote.ApiInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -26,14 +29,21 @@ object NetworkModule {
     }
 
     @Provides
+    fun provideConnectivityInterceptor(@ApplicationContext context: Context) : ConnectivityInterceptor {
+        return ConnectivityInterceptor(context)
+    }
+
+    @Provides
     fun provideOkHttpClient(
-        loggingInterceptor: HttpLoggingInterceptor
+        loggingInterceptor: HttpLoggingInterceptor,
+        connectivityInterceptor: ConnectivityInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
             .addInterceptor(loggingInterceptor)
+            .addInterceptor(connectivityInterceptor)
             .build()
     }
 
