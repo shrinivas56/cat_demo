@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/breed_flow_graph.xml"
+    app:startDestination="@id/breedListingFragment">
+
+    <fragment
+        android:id="@+id/breedListingFragment"
+        android:name="com.intuit.catdemo.presentation.ui.breed.BreedListingFragment"
+        android:label="BreedListingFragment" >
+        <!--<action
+            android:id="@+id/action_breedListingFragment_to_breedDetailFragment"
+            app:destination="@id/breedDetailFragment" />-->
+    </fragment>
+    <!--<fragment
+        android:id="@+id/breedDetailFragment"
+        android:name="com.intuit.catdemo.presentation.ui.breed.BreedDetailFragment"
+        android:label="BreedDetailFragment" />-->
+</navigation>
