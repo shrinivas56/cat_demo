@@ -70,14 +70,9 @@
                     android:textSize="@dimen/sp_20" />
 
                 <TextView
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dp_8"
-                    android:layout_marginLeft="@dimen/dp_8"
-                    android:layout_marginTop="@dimen/dp_8"
-                    android:layout_marginEnd="@dimen/dp_8"
-                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_5"
                     android:gravity="center"
                     android:text="@{`Country : `+catBreed.origin}"
                     android:textAlignment="center"
@@ -116,34 +111,16 @@
                     app:layout_constraintEnd_toEndOf="parent" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:gravity="center"
-                    android:text="@{catBreed.description}"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp_16" />
+                    style="@style/DescriptionTextStyle"
+                    android:text="@{catBreed.description}" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:gravity="center"
-                    android:text="@{catBreed.description}"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp_16" />
+                    style="@style/DescriptionTextStyle"
+                    android:text="@{catBreed.description}" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:gravity="center"
-                    android:text="@{catBreed.description}"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp_16" />
+                    style="@style/DescriptionTextStyle"
+                    android:text="@{catBreed.description}" />
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

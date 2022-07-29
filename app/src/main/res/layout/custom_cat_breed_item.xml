@@ -25,54 +25,52 @@
             <ImageView
                 android:id="@+id/ivCatBreed"
                 android:layout_width="@dimen/image_width"
-                android:background="@color/white"
                 android:layout_height="@dimen/image_height"
+                android:background="@color/white"
+                android:scaleType="fitXY"
+                app:imageUrl="@{catBreed.image.url}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:placeHolder="@{@drawable/ic_baseline_broken_image_24}"
-                android:scaleType="fitXY"
-                app:imageUrl="@{catBreed.image.url}" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:placeHolder="@{@drawable/ic_baseline_broken_image_24}" />
 
-            <TextView
-                android:id="@+id/tvBreedName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{`Breed : `+catBreed.name}"
-                android:textColor="@color/white"
-                android:textSize="@dimen/sp_16"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.05"
                 app:layout_constraintStart_toEndOf="@id/ivCatBreed"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@tools:sample/full_names" />
+                android:padding="@dimen/dp_5">
 
-            <TextView
-                android:id="@+id/tvCountryOfOrigin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
-                android:text="@{`Country : `+catBreed.origin}"
-                android:textColor="@color/white"
-                android:textSize="@dimen/sp_14"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.05"
-                app:layout_constraintStart_toEndOf="@id/ivCatBreed"
-                app:layout_constraintTop_toBottomOf="@id/tvBreedName"
-                tools:text="@tools:sample/full_names" />
+                <TextView
+                    android:id="@+id/tvBreedName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{catBreed.name}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_16"
+                    tools:text="@tools:sample/full_names" />
 
-            <TextView
-                android:id="@+id/tvWeight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
-                android:text="@{`Weight : `+catBreed.weight.metric+` KG`}"
-                android:textColor="@color/white"
-                android:textSize="@dimen/sp_14"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.05"
-                app:layout_constraintStart_toEndOf="@id/ivCatBreed"
-                app:layout_constraintTop_toBottomOf="@id/tvCountryOfOrigin"
-                tools:text="@tools:sample/full_names" />
+                <TextView
+                    android:id="@+id/tvCountryOfOrigin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="@{`Country : `+catBreed.origin}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_14"
+                    tools:text="@tools:sample/full_names" />
+
+                <TextView
+                    android:id="@+id/tvWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="@{`Weight : `+catBreed.weight.metric+` KG`}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_14"
+                    tools:text="@tools:sample/full_names" />
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>
