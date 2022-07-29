@@ -45,4 +45,10 @@ class BreedListingViewModel @Inject constructor(private val breedListingUseCase:
             }
         )
     }
+
+    fun getCatBreed(position: Int): CatBreed? {
+        if(position>=_catBreeds.value!!.size)
+            return null
+        return catBreeds.value!![position]
+    }
 }

@@ -24,11 +24,7 @@ abstract class UseCase<Type> where Type : Any {
                 } ?:run{
                     onResult?.onError(NoSuchFieldException())
                 }
-            } catch (e: CancellationException) {
-                e.printStackTrace()
-                onResult?.onError(e)
             }catch (e: Exception){
-                e.printStackTrace()
                 onResult?.onError(e)
             }
         }

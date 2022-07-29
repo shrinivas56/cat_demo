@@ -1,5 +1,7 @@
 package com.intuit.catdemo.presentation.ui.breed.listener
 
+import com.intuit.catdemo.domain.model.CatBreed
+
 interface BreedItemClickListener {
-    fun onItemClick(position : Int)
+    fun onItemClick(catBreed : CatBreed)
 }

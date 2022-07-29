@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.intuit.catdemo.R
 import com.intuit.catdemo.databinding.FragmentBreedListingBinding
+import com.intuit.catdemo.domain.model.CatBreed
 import com.intuit.catdemo.presentation.ui.breed.adapter.BreedAdapter
 import com.intuit.catdemo.presentation.ui.breed.listener.BreedItemClickListener
 import com.intuit.catdemo.presentation.viewmodel.breed.BreedListingViewModel
@@ -78,7 +79,7 @@ class BreedListingFragment : Fragment(), BreedItemClickListener{
                 if(!viewModel.isPaginationDataAvailable || viewModel.getIsLoading.value == true)
                     return
                 val totalItemCount = recyclerView.layoutManager?.itemCount ?: 0
-                val lastVisibleItemPosition: Int = (recyclerView.layoutManager as LinearLayoutManager)?.findLastVisibleItemPosition()
+                val lastVisibleItemPosition: Int = (recyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
                 if (totalItemCount == lastVisibleItemPosition + 1) {
                     viewModel.getCatBreeds()
                 }
@@ -86,9 +87,9 @@ class BreedListingFragment : Fragment(), BreedItemClickListener{
         }
     }
 
-    override fun onItemClick(position: Int) {
+    override fun onItemClick(catBreed: CatBreed) {
         val bundle = Bundle()
-        bundle.putParcelable(getString(R.string.key_cat_breed), viewModel.catBreeds.value!![position])
+        bundle.putParcelable(getString(R.string.key_cat_breed), catBreed)
         findNavController().navigate(R.id.action_breedListingFragment_to_breedDetailFragment, bundle)
     }
 

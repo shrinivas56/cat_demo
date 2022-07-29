@@ -4,7 +4,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import okhttp3.CacheControl
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
@@ -15,15 +14,13 @@ class ConnectivityInterceptor @Inject constructor(private val mContext: Context)
 
     override fun intercept(chain: Interceptor.Chain): Response {
 
-            // Get the request from the chain.
-            var request : Request = chain.request()
-            if (!isInternetAvailable(mContext)){
-                throw ConnectException("No Connectivity Exception")
-            }
+        // Get the request from the chain.
+        var request: Request = chain.request()
+        if (!isInternetAvailable(mContext)) {
+            throw ConnectException("No Connectivity Exception")
+        }
 
-            val response = chain.proceed(request)
-
-            return response
+        return chain.proceed(request)
 
     }
 

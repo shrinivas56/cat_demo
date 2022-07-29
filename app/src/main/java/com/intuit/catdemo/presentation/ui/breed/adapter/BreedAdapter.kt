@@ -26,7 +26,7 @@ class BreedAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(catBreeds[position])
         holder.binding.root.setOnClickListener {
-            itemClickListener.onItemClick(holder.adapterPosition)
+            itemClickListener.onItemClick(catBreeds[holder.adapterPosition])
         }
     }
 
